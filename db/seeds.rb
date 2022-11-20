@@ -20,8 +20,11 @@ end
 puts "There are now #{Airport.count} rows in the airports table"
 
 sample_durations = 360.step(720, 10).to_a # 6 to 12 hours in 10 minute increments
-10.times do |i|
-  Flight.create!(departure_airport_id: Airport.all.sample.id, arrival_airport_id: Airport.all.sample.id, datetime: rand(-5.years..5.years).ago, duration: sample_durations.sample)
+
+100.times do |i|
+  f = Flight.new(departure_airport_id: Airport.all.sample.id, datetime: rand(Time.now..(Time.now + 1.year)), duration: sample_durations.sample)
+  f.arrival_airport_id = Airport.where.not(id: f.departure_airport_id).sample.id
+  f.save!
 end
 
 puts "There are now #{Flight.count} rows in the flights table"
