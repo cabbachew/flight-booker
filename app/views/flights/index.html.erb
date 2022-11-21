@@ -1,3 +1,22 @@
 <h2>flights#index</h2>
 
-<div>create search form here</div>
+<p><%= params %></p>
+
+<%= form_with method: :get do |form| %>
+  <%= form.label :departure_airport_id, "Depart from: " %>
+  <%= form.select :departure_airport_id, @airport_options %><br>
+  <%= form.label :arrival_airport_id, "Arrive at: " %>
+  <%= form.select :arrival_airport_id, @airport_options %><br>
+
+  <%= form.submit "Search" %>
+<% end %><br>
+
+<div>
+  <% @flights.each do |flight| %>
+    <%= flight.id %><br>
+    <%= flight.departure_airport.iata_code %><br>
+    <%= flight.arrival_airport.iata_code %><br>
+    <%= flight.datetime %><br>
+    <%= flight.duration %><br><br>
+  <% end %>
+</div>
