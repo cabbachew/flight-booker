@@ -4,7 +4,7 @@ class Flight < ApplicationRecord
 
   # validates_comparison_of
   validates :arrival_airport_id, comparison: { other_than: :departure_airport_id}
-  validates :datetime, :duration, presence: true
+  validates :date, :duration, presence: true
 
   def departure_code
     departure_airport.iata_code
