@@ -11,8 +11,10 @@
   <%# form.select :departure_airport_id, @airport_options %>
   <%# form.label :arrival_airport_id, "Arrive at: " %>
   <%# form.select :arrival_airport_id, @airport_options %>
-  <%= form.label :date, "Date: " %>
-  <%= form.date_field :date, value: @query_params[:date] %><br>
+  <%= form.label :date, "Select a date: " %>
+  <%= form.collection_select :date, @flights, :date, :date, selected: @query_params[:date], include_blank: true %><br>
+  <%# form.label :date, "Date: " %>
+  <%# form.date_field :date, value: @query_params[:date] %>
   <%= form.label :num_tickets, "Number of passengers: " %>
   <%= form.select :num_tickets, [["1",1],["2",2],["3",3],["4",4]], include_blank: true %><br>
 
