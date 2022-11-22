@@ -2,7 +2,7 @@
 
 <p><%= params %></p>
 
-<%= form_with method: :get do |form| %>
+<%= form_with method: :get, scope: :query do |form| %>
   <%= form.label :departure_code, "Depart from: " %>
   <%= form.collection_select :departure_code, Airport.order(:iata_code), :id, :iata_code, include_blank: true %><br>
   <%= form.label :arrival_code, "Arrive at: " %>

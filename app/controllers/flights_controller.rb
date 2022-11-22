@@ -22,10 +22,18 @@ class FlightsController < ApplicationController
     #   end
     # end
     MAPPED_PARAMS.each do |key, value|
-      if params[key].present?
-        obj[value] = params[key]
+      if query_params[key].present?
+        obj[value] = query_params[key]
       end
     end
     obj
+  end
+
+  def query_params # Strong parameters
+    params.fetch(:query, {}).permit(:departure_code, :arrival_code, :num_tickets, :date)
+  end
+
+  def query_date
+    
   end
 end
