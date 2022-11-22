@@ -2,7 +2,8 @@ class FlightsController < ApplicationController
   FILTER_PARAMS = [:departure_airport_id, :arrival_airport_id]
 
   def index
-    @airport_options = Airport.all.pluck(:iata_code, :id).unshift(["--", nil])
+    # Not needed using collection_select helper with :include_blank option
+    # @airport_options = Airport.all.pluck(:iata_code, :id).unshift(["--", nil])
     @flights = Flight.where(filter_object)
   end
   

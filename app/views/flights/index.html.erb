@@ -4,15 +4,21 @@
 
 <%= form_with method: :get do |form| %>
   <%= form.label :departure_airport_id, "Depart from: " %>
-  <%= form.select :departure_airport_id, @airport_options %><br>
+  <%= form.collection_select :departure_airport_id, Airport.order(:iata_code), :id, :iata_code, include_blank: true %><br>
   <%= form.label :arrival_airport_id, "Arrive at: " %>
-  <%= form.select :arrival_airport_id, @airport_options %><br>
-  <%= form.label :number_of_passengers, "Number of passengers: " %>
-  <%= form.select :number_of_passengers, [["--",nil],["1",1],["2",2],["3",3],["4",4]] %><br>
+  <%= form.collection_select :arrival_airport_id, Airport.order(:iata_code), :id, :iata_code, include_blank: true %><br>
+  <%# form.label :departure_airport_id, "Depart from: " %>
+  <%# form.select :departure_airport_id, @airport_options %>
+  <%# form.label :arrival_airport_id, "Arrive at: " %>
+  <%# form.select :arrival_airport_id, @airport_options %>
+
+  <%= form.label :num_tickets, "Number of passengers: " %>
+  <%= form.select :num_tickets, [["1",1],["2",2],["3",3],["4",4]], include_blank: true %><br>
 
   <%= form.submit "Search" %>
 <% end %><br>
 
+<h3>Available Flights:</h3>
 <div>
   <% @flights.each do |flight| %>
     <%= flight.id %><br>
