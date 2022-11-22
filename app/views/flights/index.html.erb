@@ -7,6 +7,8 @@
   <%= form.select :departure_airport_id, @airport_options %><br>
   <%= form.label :arrival_airport_id, "Arrive at: " %>
   <%= form.select :arrival_airport_id, @airport_options %><br>
+  <%= form.label :number_of_passengers, "Number of passengers: " %>
+  <%= form.select :number_of_passengers, [["--",nil],["1",1],["2",2],["3",3],["4",4]] %><br>
 
   <%= form.submit "Search" %>
 <% end %><br>
