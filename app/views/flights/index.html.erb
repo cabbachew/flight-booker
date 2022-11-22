@@ -21,7 +21,7 @@
   <%= form.submit "Search" %>
 <% end %><br>
 
-<h3>Available Flights:</h3>
+<h3><%= @flights.any? ? 'Available flights:' : 'There are no available flights' %></h3>
 <div>
   <% @flights.each do |flight| %>
     <%= flight.id %><br>
