@@ -8,7 +8,10 @@ class FlightsController < ApplicationController
   # }
 
   def index
-    @airports = Airport.all.order(:iata_code)
+    # @airports = Airport.all.order(:iata_code)
+    @arrival_airports = Airport.all.order(:iata_code)
+    @departure_airports = Airport.all.order(:iata_code)
+
     # Not needed using collection_select helper with :include_blank option
     # @airport_options = Airport.all.pluck(:iata_code, :id).unshift(["--", nil])
     
@@ -17,12 +20,16 @@ class FlightsController < ApplicationController
     @query_params = query_params
     if query_params[:departure_code].present?
       @flights = @flights.where(departure_airport_id: query_params[:departure_code])
+      @arrival_airports = Airport.joins(:arriving_flights).where(arriving_flights: { departure_airport_id: query_params[:departure_code] }).order(:iata_code)
     end
     if query_params[:arrival_code].present?
       @flights = @flights.where(arrival_airport_id: query_params[:arrival_code])
+      @departure_airports = Airport.joins(:departing_flights).where(departing_flights: { arrival_airport_id: query_params[:arrival_code] }).order(:iata_code)
     end
     if query_params[:date].present?
       @flights = @flights.where(date: query_params[:date])
+      @arrival_airports = Airport.joins(:arriving_flights).where(arriving_flights: { date: query_params[:date] }).order(:iata_code)
+      @departure_airports = Airport.joins(:departing_flights).where(departing_flights: { date: query_params[:date] }).order(:iata_code)
     end
   end
   
