@@ -21,6 +21,10 @@
   <%= form.submit "Search" %>
 <% end %><br>
 
+<div>
+  Hello
+</div>
+
 <h3><%= @flights.any? ? 'Available flights:' : 'There are no available flights' %></h3>
 <div>
   <% @flights.each do |flight| %>
