@@ -9,9 +9,12 @@ class FlightsController < ApplicationController
 
   def index
     # @airports = Airport.all.order(:iata_code)
-    @arrival_airports = Airport.all.order(:iata_code)
-    @departure_airports = Airport.all.order(:iata_code)
 
+    # @arrival_airports = Airport.all.order(:iata_code)
+    @arrival_airports = Airport.joins(:arriving_flights).where.not(arriving_flights: { id: nil }).distinct.order(:iata_code)
+    # @departure_airports = Airport.all.order(:iata_code)
+    @departure_airports = Airport.joins(:departing_flights).where.not(departing_flights: { id: nil }).distinct.order(:iata_code)
+    
     # Not needed using collection_select helper with :include_blank option
     # @airport_options = Airport.all.pluck(:iata_code, :id).unshift(["--", nil])
     
