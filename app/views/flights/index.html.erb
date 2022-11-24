@@ -23,7 +23,7 @@
 
 <h3>Available flights:</h3>
 <div>
-  <%= form_with method: :get do |form| %>
+  <%= form_with url: "/book", method: :get do |form| %>
     <%= form.collection_radio_buttons :flight_id, @flights, :id, :summary do |b| %>
       <%= b.label { b.radio_button + " " + b.text } %><br>
     <% end %>
