@@ -16,18 +16,18 @@ class FlightsController < ApplicationController
     # @airport_options = Airport.all.pluck(:iata_code, :id).unshift(["--", nil])
     
     # @flights = Flight.where(filter_params)
-    @flights = Flight.all
+    @flights = Flight.all.order(:date)
     @query_params = query_params
     if query_params[:departure_code].present?
-      @flights = @flights.where(departure_airport_id: query_params[:departure_code])
+      @flights = @flights.where(departure_airport_id: query_params[:departure_code]).order(:date)
       @arrival_airports = Airport.joins(:arriving_flights).where(arriving_flights: { departure_airport_id: query_params[:departure_code] }).order(:iata_code)
     end
     if query_params[:arrival_code].present?
-      @flights = @flights.where(arrival_airport_id: query_params[:arrival_code])
+      @flights = @flights.where(arrival_airport_id: query_params[:arrival_code]).order(:date)
       @departure_airports = Airport.joins(:departing_flights).where(departing_flights: { arrival_airport_id: query_params[:arrival_code] }).order(:iata_code)
     end
     if query_params[:date].present?
-      @flights = @flights.where(date: query_params[:date])
+      @flights = @flights.where(date: query_params[:date]).order(:date)
       @arrival_airports = Airport.joins(:arriving_flights).where(arriving_flights: { date: query_params[:date] }).order(:iata_code)
       @departure_airports = Airport.joins(:departing_flights).where(departing_flights: { date: query_params[:date] }).order(:iata_code)
     end
