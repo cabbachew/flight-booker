@@ -21,17 +21,37 @@
   <%= form.submit "Search" %>
 <% end %><br>
 
+<h3>Available flights:</h3>
 <div>
-  Hello
-</div>
-
-<h3><%= @flights.any? ? 'Available flights:' : 'There are no available flights' %></h3>
-<div>
-  <% @flights.each do |flight| %>
-    <%= flight.id %><br>
-    <%= flight.departure_airport.iata_code %><br>
-    <%= flight.arrival_airport.iata_code %><br>
-    <%= flight.date %><br>
-    <%= flight.duration %><br><br>
+  <%= form_with method: :get do |form| %>
+    <%= form.collection_radio_buttons :flight_id, @flights, :id, :summary do |b| %>
+      <%= b.label { b.radio_button + " " + b.text } %><br>
+    <% end %>
+    <%= form.submit "Select" %>
   <% end %>
 </div>
+
+<% if false %>
+  <h3><%= @flights.any? ? 'Available flights:' : 'There are no available flights' %></h3>
+  <div>
+    <% @flights.each do |flight| %>
+      <%= flight.id %><br>
+      <%= flight.departure_airport.iata_code %><br>
+      <%= flight.arrival_airport.iata_code %><br>
+      <%= flight.date %><br>
+      <%= flight.duration %><br><br>
+    <% end %>
+  </div>
+<% end %>
+
+<% if false %>
+  <div>
+    <% form_with method: :get do |form| %>
+      <%= form.radio_button :choice, "this" %>
+      <%= form.label :choice_this, "this" %>
+      <%= form.radio_button :choice, "that" %>
+      <%= form.label :choice_that, "that" %>
+      <%= form.submit "Submit" %>
+    <% end %>
+  </div>
+<% end %>

@@ -13,4 +13,8 @@ class Flight < ApplicationRecord
   def arrival_code
     arrival_airport.iata_code
   end
+
+  def summary
+    "From #{departure_code} to #{arrival_code} on #{date}"
+  end
 end
