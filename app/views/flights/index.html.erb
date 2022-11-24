@@ -24,6 +24,7 @@
 <h3>Available flights:</h3>
 <div>
   <%= form_with url: "/book", method: :get do |form| %>
+    <%= form.hidden_field :num_tickets, value: @query_params[:num_tickets] %>
     <%= form.collection_radio_buttons :flight_id, @flights, :id, :summary do |b| %>
       <%= b.label { b.radio_button + " " + b.text } %><br>
     <% end %>
