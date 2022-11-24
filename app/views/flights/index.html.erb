@@ -16,7 +16,7 @@
   <%# form.label :date, "Date: " %>
   <%# form.date_field :date, value: @query_params[:date] %>
   <%= form.label :num_tickets, "Number of passengers: " %>
-  <%= form.select :num_tickets, [["1",1],["2",2],["3",3],["4",4]], include_blank: true %><br>
+  <%= form.select :num_tickets, [["1",1],["2",2],["3",3],["4",4]], selected: @query_params[:num_tickets], include_blank: true %><br>
 
   <%= form.submit "Search" %>
 <% end %><br>
