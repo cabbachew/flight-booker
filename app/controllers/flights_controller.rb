@@ -26,7 +26,8 @@ class FlightsController < ApplicationController
     end
     @arrival_airports = Airport.where(id: @flights.pluck(:arrival_airport_id)).order(:iata_code)
     @departure_airports = Airport.where(id: @flights.pluck(:departure_airport_id)).order(:iata_code)
-    @dates = @flights.select(:date).distinct.order(:date)
+    # @dates = @flights.select(:date).distinct.order(:date)
+    @dates = @flights.pluck(:date).uniq.sort # Using select helper instead of collection_select
 
     @query_params = query_params
   end
