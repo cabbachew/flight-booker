@@ -1,6 +1,7 @@
 <h2>flights#index</h2>
 
 <p><%= params %></p>
+<p><%= @query_params %></p>
 
 <%= form_with method: :get, scope: :query do |form| %>
   <%= form.label :departure_code, "Depart from: " %>
