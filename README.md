@@ -1,7 +1,7 @@
 # README
 
-- [ ]  Review project requirements
-- [ ]  Think through data architecture
+- [x]  Review project requirements
+- [x]  Think through data architecture
 - [x]  Validate departure_airport ≠ arrival_airport (in model only)
 - [x]  Add unique index to airport codes
 - [x]  Add indices and foreign keys on departure and arrival airports in flights table
@@ -19,8 +19,9 @@
 - [x]  Pass on num_tickets in a hidden field
 - [x]  [Remove duplicates from date dropdown]
 - [x]  [Troubleshoot dropdown conditionals]
-- [ ]  Create and migrate the Booking model
-- [ ]  Create and migrate the Passenger model
-- [ ]  Set up associations between Bookings, Passengers, and Flights
-- [ ]  Validate flight selection (may require defining both :model and :url)
+- [x]  Create and migrate the Booking model
+- [x]  Create and migrate the Passenger model
+- [x]  Set up associations between Bookings, Passengers, and Flights
+- [x]  Test associations with a sample passenger and booking
+- [x]  Require flight selection to proceed to new booking
 - [ ]  [Build forms using simple_form]
