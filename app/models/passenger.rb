@@ -1,6 +1,7 @@
 class Passenger < ApplicationRecord
-  has_many :bookings
-  has_many :flights, through: :bookings
+  belongs_to :booking
+
+  delegate :flight, to: :booking
 
   validates :first_name, :last_name, presence: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP } 
