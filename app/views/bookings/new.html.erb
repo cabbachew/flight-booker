@@ -1,3 +1,12 @@
 <h2>bookings#new</h2>
 
 <p><%= params %></p>
+
+<p><%= Flight.find(params[:booking][:flight_id]).summary %></p>
+<div>
+  <%= simple_form_for @booking do |f| %>
+    <div>Number of passengers: <%= params[:booking][:num_tickets] %></div>
+    <%= f.input :flight_id, input_html: { value: params[:booking][:flight_id] } %>
+    <%= f.button :submit %>
+  <% end %>
+</div>
