@@ -9,3 +9,17 @@
     <%= @booking.passengers.map { |p| p.full_name }.join(", ") %>
   </p>
 </div>
+
+<hr>
+
+<% if @booking.passengers.exists? %>
+<div>
+  <%= simple_form_for @booking do |f| %>
+    <%= f.simple_fields_for(:passengers) do |passenger_form| %>
+      <%= passenger_form.object.full_name %>
+      <%= passenger_form.input :_destroy, as: :boolean %>
+    <% end %>
+    <%= f.button :submit %>
+  <% end %>
+</div>
+<% end %>
