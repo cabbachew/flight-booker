@@ -24,4 +24,11 @@
 - [x]  Set up associations between Bookings, Passengers, and Flights
 - [x]  Test associations with a sample passenger and booking
 - [x]  Require flight selection to proceed to new booking
-- [ ]  [Build forms using simple_form]
+- [x]  Paginate search results using kaminari gem
+- [x]  Render flash messages on application layout
+- [x]  Set up simple form for new booking page
+- [x]  Revise data architecture and associations
+- [x]  Implement create action with strong parameters
+- [x]  Nest attributes for passenger creation in booking form
+- [x]  Display booking details on show page
+- [x]  Implement deletion of associated objects through a nested form
