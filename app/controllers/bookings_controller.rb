@@ -4,12 +4,16 @@ class BookingsController < ApplicationController
     params[:num_tickets].to_i.times { @booking.passengers.build }
   end
   
+  def show
+    @booking = Booking.find(params[:id])
+  end
+
   def create
     @booking = Booking.new(booking_params)
 
     if @booking.save
       flash[:notice] = "Booking created succesfully!"
-      redirect_to root_path
+      redirect_to booking_path(@booking)
     else
       flash.now[:alert] = "Booking cannot be created."
       render :new, status: :unprocessable_entity

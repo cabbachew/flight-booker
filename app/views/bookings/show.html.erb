@@ -1,0 +1,11 @@
+<h2>bookings#show</h2>
+
+<p><%= params %></p>
+
+<div>
+  <p><%= @booking.flight.summary %></p>
+  <p>
+    <%= "Passenger".pluralize(@booking.passengers.count) + ":" %>
+    <%= @booking.passengers.map { |p| p.full_name }.join(", ") %>
+  </p>
+</div>
