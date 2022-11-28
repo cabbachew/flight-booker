@@ -31,6 +31,7 @@ class FlightsController < ApplicationController
     @flight_results = @flights.page(params[:page])
     
     @query_params = query_params
+    @num_tickets = query_params[:num_tickets]
   end
   
   private 
