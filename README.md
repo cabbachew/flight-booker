@@ -31,4 +31,5 @@
 - [x]  Implement create action with strong parameters
 - [x]  Nest attributes for passenger creation in booking form
 - [x]  Display booking details on show page
-- [x]  Implement deletion of associated objects through a nested form
+- [x]  Implement deletion of associated objects (i.e. passengers through booking) through a nested form
+- [ ]  Separate implementation of update and destroy for bookings
