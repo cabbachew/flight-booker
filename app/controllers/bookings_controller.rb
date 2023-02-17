@@ -13,10 +13,11 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
 
     if @booking.update(booking_params)
-      flash[:notice] = "Passenger deleted!"
-      redirect_to booking_path(params[:id])
+      flash[:notice] = "Booking updated succesfully!"
+      redirect_to booking_path(@booking)
     else
-      puts "*" * 100
+      flash.now[:alert] = "Booking cannot be updated."
+      render :edit, status: :unprocessable_entity
     end
   end
 
